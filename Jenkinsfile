@@ -29,7 +29,7 @@ pipeline {
     }
      post {
         always {
-           bat "nssm start Payroll"
+           bat "net start Payroll"
         }
     }
 }
