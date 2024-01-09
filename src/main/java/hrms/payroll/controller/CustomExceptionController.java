@@ -3,7 +3,10 @@ package hrms.payroll.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import hrms.payroll.dto.GenericErrorResponse;
+import hrms.payroll.exception.CSVErrorException;
 
 @RestControllerAdvice
 public class CustomExceptionController {
@@ -33,6 +37,16 @@ public class CustomExceptionController {
 	public GenericErrorResponse illegalArgumentException(IllegalArgumentException exception) {
 		return GenericErrorResponse.builder().status(HttpStatus.NOT_ACCEPTABLE.value()).error(exception.getMessage())
 				.build();
+	}
+
+	@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+	@ExceptionHandler(CSVErrorException.class)
+	public ResponseEntity<byte[]> downloadErrorFile(hrms.payroll.exception.CSVErrorException exception) {
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.TEXT_PLAIN);
+		headers.setContentDispositionFormData("attachment", "Response.txt");
+		return ResponseEntity.status(406).headers(headers).body(exception.getMessage().getBytes());
 	}
 
 }

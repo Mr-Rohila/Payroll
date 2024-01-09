@@ -1,5 +1,6 @@
 package hrms.payroll.service;
 
+import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -16,4 +17,8 @@ public interface PayrollService {
 	List<PayrollDto> payrollByEmployee(Long employeeId);
 
 	PayrollDto payrollByEmployeeAndMonth(Long employeeId, String monthName);
+
+	List<String> payrollCsvHeader();
+
+	String csvUpload(InputStream inputStream);
 }

@@ -1,5 +1,9 @@
 package hrms.payroll.service.impl;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -46,6 +50,25 @@ public class PayrollServiceImpl implements PayrollService {
 
 	public void calculatePayroll(Long employeeId) {
 
+	}
+
+	@Override
+	public List<String> payrollCsvHeader() {
+		return List.of("Sno", "Employee Id", "Employee Name", "CTC", "Total Pay");
+	}
+
+	@Override
+	public String csvUpload(InputStream inputStream) {
+
+		StringBuilder errorTxt = new StringBuilder();
+
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			errorTxt.append("\ncan not read CSV file : reason => " + e.getLocalizedMessage());
+		}
+		return errorTxt.toString();
 	}
 
 }
