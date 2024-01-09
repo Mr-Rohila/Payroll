@@ -6,9 +6,9 @@ spring:
     name: Payroll-Service
 
   datasource:
-   url: jdbc:mysql://192.168.1.60:3306/payroll
-   username: ankush
-   password: 1234
+   url: jdbc:mysql://localhost:3306/payroll
+   username: root
+   password: system
    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -27,5 +27,5 @@ management:
         - '*'
 logging:
   file:
-    name: G:\HRMS_API\Payroll\app.log
+    name: D:\New folder\payroll.log
   
