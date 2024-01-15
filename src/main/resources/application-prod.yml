@@ -25,7 +25,12 @@ management:
       exposure:
         include:
         - '*'
-    
+springdoc:
+  api-docs:
+    path: /payroll/v3/api-docs    
+  swagger-ui:
+    path: /payroll/v3
+     
 logging:
   file:
     name: G:\HRMS_API\Payroll\app.log

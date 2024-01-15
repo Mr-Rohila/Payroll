@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import hrms.payroll.dto.PayrollDto;
+import hrms.payroll.exception.CSVErrorException;
 
 @Service
 public interface PayrollService {
@@ -20,5 +21,5 @@ public interface PayrollService {
 
 	List<String> payrollCsvHeader();
 
-	String csvUpload(InputStream inputStream);
+	String csvUpload(InputStream inputStream) throws CSVErrorException;
 }

@@ -8,13 +8,15 @@ import lombok.Data;
 public class SalaryStructureDto {
 
 	@NotNull(message = "Invalid employee Id")
-	private Long employeId;
+	private Long employeeId;
 
 	@NotBlank(message = "Employee name can not be empty")
 	private String employeeName;
 
 	@NotNull(message = "CTC can not be empty")
 	private Long ctc;
+
+	private Long basic;
 
 	private Long pf;
 

@@ -28,4 +28,19 @@ management:
 logging:
   file:
     name: D:\New folder\payroll.log
-  
+
+
+
+springdoc:
+  api-docs:
+    path: /payroll/v3/api-docs    
+  swagger-ui:
+    path: /payroll/v3
+    
+payroll:
+  structure:
+    csv:
+      header: Sno, Employee Id, Employee Name
+  salary:
+    csv:
+      header: Sno, Employe Id, Employee Name
