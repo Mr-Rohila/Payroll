@@ -4,34 +4,12 @@ server:
 spring:
   application:
     name: Payroll-Service
-
-  datasource:
-   url: jdbc:mysql://192.168.1.60:3306/payroll
-   username: ankush
-   password: 1234
-   driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
- 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://192.168.1.60:8761/eureka/
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-        - '*'
-springdoc:
-  api-docs:
-    path: /payroll/v3/api-docs    
-  swagger-ui:
-    path: /payroll/v3
-     
+  config:
+    import:
+    - configserver:http://192.168.1.60:5050
+    
 logging:
+  level:
+    root: INFO
   file:
     name: G:\HRMS_API\Payroll\app.log
-  

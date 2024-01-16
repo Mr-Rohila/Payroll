@@ -4,43 +4,6 @@ server:
 spring:
   application:
     name: Payroll-Service
-
-  datasource:
-   url: jdbc:mysql://localhost:3306/payroll
-   username: root
-   password: system
-   driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
- 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://192.168.1.60:8761/eureka/
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-        - '*'
-logging:
-  file:
-    name: D:\New folder\payroll.log
-
-
-
-springdoc:
-  api-docs:
-    path: /payroll/v3/api-docs    
-  swagger-ui:
-    path: /payroll/v3
-    
-payroll:
-  structure:
-    csv:
-      header: Sno, Employee Id, Employee Name
-  salary:
-    csv:
-      header: Sno, Employe Id, Employee Name
+  config:
+    import:
+    - configserver:http://192.168.1.60:5050
